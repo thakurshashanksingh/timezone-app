@@ -15,6 +15,8 @@
 
 
 
+
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -35,6 +37,17 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<configuration>
+				<cloudHubDeployment>
+				<username>shashank073</username>
+				<enviroment>Sandbox</enviroment>
+				<workers>1</workers>
+				<workerType>Micro</workerType>
+				<applicationName>timezone-app</applicationName>
+				<password>Shanki@2004</password>
+				<muleVersion>4.9.0</muleVersion>
+				</cloudHubDeployment>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
