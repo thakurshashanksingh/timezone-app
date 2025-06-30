@@ -23,44 +23,33 @@
 
 		<app.runtime>4.9.0</app.runtime>
 		<mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
+		<anypoint.username>your-username</anypoint.username>
+		<anypoint.password>your-password</anypoint.password>
 	</properties>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.2.0</version>
-			</plugin>
-			<plugin>
-  <groupId>org.mule.tools.maven</groupId>
-  <artifactId>mule-maven-plugin</artifactId>
-  <version>${mule.maven.plugin.version}</version>
-  <extensions>true</extensions>
-  <executions>
-    <execution>
-      <id>attach-artifact</id>
-      <phase>package</phase>
-      <goals>
-        <goal>attach-artifact</goal>
-      </goals>
-    </execution>
-  </executions>
-  <configuration>
-    <cloudHubDeployment>
-      <username>shashank073</username>
-      <password>Shanki@2004</password>
-      <environment>Sandbox</environment>
-      <workers>1</workers>
-      <workerType>Micro</workerType>
-      <applicationName>timezone-app</applicationName>
-      <muleVersion>4.9.0</muleVersion>
-    </cloudHubDeployment>
-  </configuration>
-</plugin>
-
-		</plugins>
-	</build>
+  <plugins>
+    <plugin>
+      <groupId>org.mule.tools.maven</groupId>
+      <artifactId>mule-maven-plugin</artifactId>
+      <version>3.10.0</version>
+      <extensions>true</extensions>
+      <configuration>
+        <cloudHubDeployment>
+          <uri>https://anypoint.mulesoft.com</uri>
+          <muleVersion>4.4.0</muleVersion>
+          <username>${anypoint.username}</username>
+          <password>${anypoint.password}</password>
+          <applicationName>timezone-app</applicationName>
+          <environment>Sandbox</environment>
+          <region>us-east-1</region>
+          <workers>1</workers>
+          <workerType>MICRO</workerType>
+        </cloudHubDeployment>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
 
 	<dependencies>
 		<dependency>
