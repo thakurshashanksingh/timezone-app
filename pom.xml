@@ -33,22 +33,32 @@
 				<version>3.2.0</version>
 			</plugin>
 			<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-				<cloudHubDeployment>
-				<username>shashank073</username>
-				<environment>Sandbox</environment>
-				<workers>1</workers>
-				<workerType>Micro</workerType>
-				<applicationName>timezone-app</applicationName>
-				<password>Shanki@2004</password>
-				<muleVersion>4.9.0</muleVersion>
-				</cloudHubDeployment>
-				</configuration>
-			</plugin>
+  <groupId>org.mule.tools.maven</groupId>
+  <artifactId>mule-maven-plugin</artifactId>
+  <version>${mule.maven.plugin.version}</version>
+  <extensions>true</extensions>
+  <executions>
+    <execution>
+      <id>attach-artifact</id>
+      <phase>package</phase>
+      <goals>
+        <goal>attach-artifact</goal>
+      </goals>
+    </execution>
+  </executions>
+  <configuration>
+    <cloudHubDeployment>
+      <username>shashank073</username>
+      <password>Shanki@2004</password>
+      <environment>Sandbox</environment>
+      <workers>1</workers>
+      <workerType>Micro</workerType>
+      <applicationName>timezone-app</applicationName>
+      <muleVersion>4.9.0</muleVersion>
+    </cloudHubDeployment>
+  </configuration>
+</plugin>
+
 		</plugins>
 	</build>
 
