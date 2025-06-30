@@ -13,7 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <mule.maven.plugin.version>3.10.0</mule.maven.plugin.version>
+        <mule.maven.plugin.version>3.9.1</mule.maven.plugin.version>
     </properties>
 
     <build>
@@ -24,17 +24,27 @@
                 <version>${mule.maven.plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <cloudHubDeployment>
+                    <cloudhub2Deployment> <!-- Correct tag for CloudHub 2.0 -->
                         <uri>https://anypoint.mulesoft.com</uri>
+                        <provider>MC</provider> <!-- Required for CloudHub 2.0 -->
+                        <environment>${environment}</environment>
+                        <target>${targetName}</target> <!-- Required for CloudHub 2.0 -->
                         <muleVersion>${muleVersion}</muleVersion>
                         <username>${user}</username>
                         <password>${pass}</password>
                         <applicationName>${appName}</applicationName>
-                        <environment>${environment}</environment>
-                        <region>us-east-1</region>
-                        <workers>1</workers>
-                        <workerType>MICRO</workerType>
-                    </cloudHubDeployment>
+                        <replicas>1</replicas>
+                        <vCores>1</vCores>
+                        <deploymentSettings>
+                            <http>
+                                <inbound>
+                                    <publicUrl>${publicURL}</publicUrl>
+                                    <forwardSslSession>true</forwardSslSession>
+                                    <lastMileSecurity>true</lastMileSecurity>
+                                </inbound>
+                            </http>
+                        </deploymentSettings>
+                    </cloudhub2Deployment>
                 </configuration>
             </plugin>
         </plugins>
@@ -79,7 +89,7 @@
             </activation>
             <properties>
                 <environment>Sandbox</environment>
-                <targetName>my-target</targetName>
+                <targetName>my-target</targetName> <!-- This should match your CloudHub 2.0 target -->
                 <muleVersion>4.4.0</muleVersion>
                 <user>shashank073</user>
                 <pass>Shanki@2004</pass>
