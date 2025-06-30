@@ -40,7 +40,7 @@
 				<configuration>
 				<cloudHubDeployment>
 				<username>shashank073</username>
-				<enviroment>Sandbox</enviroment>
+				<environment>Sandbox</environment>
 				<workers>1</workers>
 				<workerType>Micro</workerType>
 				<applicationName>timezone-app</applicationName>
